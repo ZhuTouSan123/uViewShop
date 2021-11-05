@@ -1,0 +1,1 @@
+<navigator class="profile-service data-v-9b1211b0" url="{{path}}"><u-icon vue-id="c72f2244-1" name="{{iconName}}" size="36" class="data-v-9b1211b0" bind:__l="__l"></u-icon><text class="u-m-l-20 data-v-9b1211b0">{{title}}</text><u-icon class="arrow-right data-v-9b1211b0" vue-id="c72f2244-2" name="arrow-right" bind:__l="__l"></u-icon></navigator>

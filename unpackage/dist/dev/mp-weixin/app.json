@@ -3,7 +3,11 @@
         "pages/index/index",
         "pages/goods/index",
         "pages/cart/index",
-        "pages/profile/index"
+        "pages/profile/index",
+        "pages/auth/login",
+        "pages/profile/modify/modify",
+        "pages/profile/star/star",
+        "pages/profile/address/address"
     ],
     "subPackages": [],
     "window": {

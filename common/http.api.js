@@ -14,12 +14,12 @@ const install = (Vue, vm) => {
 	//登录
 	vm.$u.api.authLogin  = (params = {}) => vm.$u.post('/api/auth/login', params);
 	//退出
-	vm.$u.api.authLogout  = (params = {}) => vm.$u.post('/api/auth/logout', params);
+	vm.$u.api.authLogout  = () => vm.$u.post('/api/auth/logout');
 	
 	//首页
 	vm.$u.api.index  = (params = {}) => vm.$u.get('/api/index', params);
 	
-	//用户相关
+	//用户相关/api/auth/register
 	//个人中心
 	vm.$u.api.userInfo = () => vm.$u.get('/api/user');
 	

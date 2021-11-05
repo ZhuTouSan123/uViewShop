@@ -59,9 +59,7 @@
 				if (this.current == 2) params.recommend = 1;
 				if (this.current == 3) params.new = 1;
 				const res = await this.$u.api.index(params);
-				// uni.stopPullDownRefresh();
 				this.loading = false;
-				console.log(res);
 				this.slides = res.slides;
 				this.noMore = res.goods.data == 0 ? true : false;
 				this.goods = [...this.goods, ...res.goods.data];
@@ -73,10 +71,6 @@
 				this.getGoods();
 			}
 		}
-		// onPullDownRefresh() {
-		// 	uni.startPullDownRefresh();
-		// 	this.getGoods();
-		// }
 	}
 </script>
 

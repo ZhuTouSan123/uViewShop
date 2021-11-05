@@ -6,6 +6,10 @@
 			<input class="u-border-bottom" v-model="email" placeholder="请输入邮箱" />
 			<input class="u-border-bottom" type="password" v-model="password" placeholder="请输入密码" />
 			<button @tap="submit" :style="[inputStyle]" class="getCaptcha">登录</button>
+			<view class="findpassword-reg u-flex u-row-between u-m-t-10">
+				<navigator url="./findpassword">找回密码</navigator>
+				<navigator url="./reg">立即注册</navigator>
+			</view>
 		</view>
 		<view class="buttom">
 			<view class="loginType">
@@ -56,6 +60,9 @@ export default {
 			this.$u.vuex('vuex_token',loginRes.access_token);
 			const userInfo = await this.$u.api.userInfo();
 			this.$u.vuex('vuex_user',userInfo);
+			uni.switchTab({
+				url: "/pages/profile/index"
+			});
 		}
 	}
 };
@@ -70,7 +77,10 @@ export default {
 	.content {
 		width: 600rpx;
 		margin: 80rpx auto 0;
-
+		.findpassword-reg{
+			font-size: 24rpx;
+			color: #888;
+		}
 		.title {
 			text-align: left;
 			font-size: 60rpx;

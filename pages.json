@@ -7,7 +7,6 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页"
-				// "enablePullDownRefresh": true
 			}
 		},
 		{
@@ -20,28 +19,63 @@
 			"path": "pages/cart/index",
 			"style": {
 				"navigationBarTitleText": "购物车"
-			}
+			},
+			"name": "cart"
 		},
 		{
 			"path": "pages/profile/index",
 			"style": {
 				"navigationBarTitleText": "我的"
-			}
-		}, {
-			"path": "components/goods-card/goods-card",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
+			},
+			"name": "mine"
 		}, {
 			"path": "pages/auth/login",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/profile/modify/modify",
+			"style": {
+				"navigationBarTitleText": "修改信息",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/profile/star/star",
+			"style": {
+				"navigationBarTitleText": "收藏",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/profile/address/address",
+			"style": {
+				"navigationBarTitleText": "地址管理",
 				"enablePullDownRefresh": false
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/auth/findpassword",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "找回密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/auth/reg",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "图书商城",
