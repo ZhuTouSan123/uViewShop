@@ -3,11 +3,11 @@
 		<view class="top"></view>
 		<view class="content">
 			<view class="title">欢迎登录图书商城</view>
-			<input class="u-border-bottom" v-model="email" placeholder="请输入邮箱" />
+			<input class="u-border-bottom" v-model="email" placeholder="请输入邮箱"/>
 			<input class="u-border-bottom" type="password" v-model="password" placeholder="请输入密码" />
 			<button @tap="submit" :style="[inputStyle]" class="getCaptcha">登录</button>
 			<view class="findpassword-reg u-flex u-row-between u-m-t-10">
-				<navigator url="./findpassword">找回密码</navigator>
+				<navigator :url="`./findpassword?email=${email}`">找回密码</navigator>
 				<navigator url="./reg">立即注册</navigator>
 			</view>
 		</view>
@@ -36,8 +36,12 @@ export default {
 	data() {
 		return {
 			email: '',
-			password:''
+			password:'',
 		}
+	},
+	onLoad(option) {
+		if(option.email)
+		this.email = option.email;
 	},
 	computed: {
 		inputStyle() {
@@ -76,7 +80,7 @@ export default {
 	font-size: 28rpx;
 	.content {
 		width: 600rpx;
-		margin: 80rpx auto 0;
+		margin: 0 auto;
 		.findpassword-reg{
 			font-size: 24rpx;
 			color: #888;
@@ -85,7 +89,8 @@ export default {
 			text-align: left;
 			font-size: 60rpx;
 			font-weight: 500;
-			margin-bottom: 100rpx;
+			margin-top: 40rpx;
+			margin-bottom: 60rpx;
 		}
 		input {
 			text-align: left;
@@ -118,7 +123,7 @@ export default {
 	.buttom {
 		.loginType {
 			display: flex;
-			padding: 350rpx 150rpx 150rpx 150rpx;
+			padding: 300rpx 150rpx 150rpx 150rpx;
 			justify-content:space-between;
 			
 			.item {

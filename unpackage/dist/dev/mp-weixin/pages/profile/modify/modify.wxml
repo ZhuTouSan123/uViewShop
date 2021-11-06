@@ -1,1 +1,1 @@
-<view></view>
+<view><u-avatar vue-id="22958666-1" src="{{vuex_user.avatar_url}}" size="120" data-event-opts="{{[['^click',[['updateAvatar']]]]}}" bind:click="__e" bind:__l="__l"></u-avatar></view>

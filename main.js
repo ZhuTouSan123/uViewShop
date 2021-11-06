@@ -14,6 +14,12 @@ let vuexStore = require("@/store/$u.mixin.js");
 Vue.mixin(vuexStore);
 import store from '@/store'
 
+// Vue.mixin({
+// 	onLoad() {
+// 		console.log('全局混入');
+// 	}
+// })
+
 const app = new Vue({
 	store,
 	...App

@@ -1,1 +1,1 @@
-<view>goods<view>{{vuex_token}}</view><button type="default" data-event-opts="{{[['tap',[['fn',['$event']]]]]}}" bindtap="__e">按钮</button></view>
+<view>goods<view>{{vuex_token}}</view><button type="default">按钮</button></view>

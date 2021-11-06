@@ -11,13 +11,18 @@
 }
 #login .content.data-v-cbd6070a {
   width: 600rpx;
-  margin: 80rpx auto 0;
+  margin: 0 auto;
+}
+#login .content .findpassword-reg.data-v-cbd6070a {
+  font-size: 24rpx;
+  color: #888;
 }
 #login .content .title.data-v-cbd6070a {
   text-align: left;
   font-size: 60rpx;
   font-weight: 500;
-  margin-bottom: 100rpx;
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
 }
 #login .content input.data-v-cbd6070a {
   text-align: left;
@@ -47,7 +52,7 @@
 }
 #login .buttom .loginType.data-v-cbd6070a {
   display: flex;
-  padding: 350rpx 150rpx 150rpx 150rpx;
+  padding: 300rpx 150rpx 150rpx 150rpx;
   justify-content: space-between;
 }
 #login .buttom .loginType .item.data-v-cbd6070a {

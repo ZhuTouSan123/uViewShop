@@ -5,7 +5,7 @@
 		</view>
 		<u-tabs class="tabs" :list="list" :is-scroll="false" :current="current" @change="changeSort"></u-tabs>
 		<u-row gutter="16" class="u-skeleton">
-			<u-col span="6" v-for="(g,index) in goods.length !== 0?goods:[{},{},{},{}]" :key='index'>
+			<u-col span="6" v-for="(g,index) in goods" :key='index'>
 				<goods-card :g='g'></goods-card>
 			</u-col>
 		</u-row>
@@ -19,7 +19,7 @@
 		data() {
 			return {
 				slides: [],
-				goods: [],
+				goods: [{},{},{},{}],
 				list: [{
 						name: '默认'
 					},
@@ -46,7 +46,7 @@
 			changeSort(i) {
 				this.current = i;
 				//重置商品列表和页码
-				this.goods = [];
+				this.goods = [{},{},{},{}];
 				this.page = 1;
 				this.getGoods();
 			},
@@ -62,7 +62,7 @@
 				this.loading = false;
 				this.slides = res.slides;
 				this.noMore = res.goods.data == 0 ? true : false;
-				this.goods = [...this.goods, ...res.goods.data];
+				this.goods = this.goods[0].title ? [...this.goods, ...res.goods.data] : res.goods.data;
 			}
 		},
 		onReachBottom() {

@@ -9,34 +9,49 @@
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 5);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 6));
-
-
-
-
-
-var _uviewUi = _interopRequireDefault(__webpack_require__(/*! uview-ui */ 12));
-
-
-
-
-var _store = _interopRequireDefault(__webpack_require__(/*! @/store */ 41));
+var _router = __webpack_require__(/*! ./route/router.js */ 12);
 
 
 
 
 
 
-
-var _httpInterceptor = _interopRequireDefault(__webpack_require__(/*! @/common/http.interceptor.js */ 43));
-
+var _uviewUi = _interopRequireDefault(__webpack_require__(/*! uview-ui */ 14));
 
 
 
-var _httpApi = _interopRequireDefault(__webpack_require__(/*! @/common/http.api.js */ 44));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.config.productionTip = false;_App.default.mpType = 'app'; // 引入全局uView
-_vue.default.use(_uviewUi.default);var vuexStore = __webpack_require__(/*! @/store/$u.mixin.js */ 45);_vue.default.mixin(vuexStore);var app = new _vue.default(_objectSpread({ store: _store.default }, _App.default)); // http拦截器，此为需要加入的内容，如果不是写在common目录，请自行修改引入路径
+
+var _store = _interopRequireDefault(__webpack_require__(/*! @/store */ 43));
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _httpInterceptor = _interopRequireDefault(__webpack_require__(/*! @/common/http.interceptor.js */ 45));
+
+
+
+
+var _httpApi = _interopRequireDefault(__webpack_require__(/*! @/common/http.api.js */ 46));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //路径换成自己的
+_vue.default.use(_router.router);_vue.default.config.productionTip = false;_App.default.mpType = 'app'; // 引入全局uView
+_vue.default.use(_uviewUi.default);var vuexStore = __webpack_require__(/*! @/store/$u.mixin.js */ 47);_vue.default.mixin(vuexStore); // Vue.mixin({
+// 	onLoad() {
+// 		console.log('全局混入');
+// 	}
+// })
+var app = new _vue.default(_objectSpread({ store: _store.default }, _App.default)); // http拦截器，此为需要加入的内容，如果不是写在common目录，请自行修改引入路径
 // 这里需要写在最后，是为了等Vue创建对象完成，引入"app"对象(也即页面的"this"实例)
 _vue.default.use(_httpInterceptor.default, app); // http接口API集中管理引入部分
-_vue.default.use(_httpApi.default, app);createApp(app).$mount();
+_vue.default.use(_httpApi.default, app); //v1.3.5起 H5端 你应该去除原有的app.$mount();使用路由自带的渲染方式
+createApp(app).$mount(); //为了兼容小程序及app端必须这样写才有效果
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
 /***/ }),

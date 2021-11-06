@@ -10,14 +10,19 @@ const install = (Vue, vm) => {
 	// 此处没有使用传入的params参数
 	//认证相关
 	//注册
-	vm.$u.api.authReg  = (params = {}) => vm.$u.post('/api/auth/register', params);
+	vm.$u.api.authReg = (params = {}) => vm.$u.post('/api/auth/register', params);
 	//登录
-	vm.$u.api.authLogin  = (params = {}) => vm.$u.post('/api/auth/login', params);
+	vm.$u.api.authLogin = (params = {}) => vm.$u.post('/api/auth/login', params);
 	//退出
-	vm.$u.api.authLogout  = () => vm.$u.post('/api/auth/logout');
+	vm.$u.api.authLogout = () => vm.$u.post('/api/auth/logout');
+	//找回密码
+	//获取邮箱验证码	
+	vm.$u.api.authCode = (params = {}) => vm.$u.post('/api/auth/reset/password/email/code', params);
+	//通过邮箱验证
+	vm.$u.api.authFindpwd = (params = {}) => vm.$u.post('/api/auth/reset/password/email', params);
 	
 	//首页
-	vm.$u.api.index  = (params = {}) => vm.$u.get('/api/index', params);
+	vm.$u.api.index = (params = {}) => vm.$u.get('/api/index', params);
 	
 	//用户相关/api/auth/register
 	//个人中心
