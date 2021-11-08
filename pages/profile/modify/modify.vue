@@ -1,6 +1,12 @@
 <template>
 	<view>
-		<u-avatar :src="vuex_user.avatar_url" size="120" @click="updateAvatar"></u-avatar>
+		<u-field
+			v-model="name"
+			label="昵称"
+			required
+		>
+		</u-field>
+		<button type="primary" class="u-m-t-20" @click="userUpdate">确认修改</button>
 	</view>
 </template>
 
@@ -8,12 +14,16 @@
 	export default {
 		data() {
 			return {
-				
+				name:''
 			};
 		},
+		onLoad() {
+			this.name = this.vuex_user.name
+		},
 		methods:{
-			updateAvatar(){
-				
+			async userUpdate(){
+				await this.$u.api.userUpdate({name: this.name});
+				this.$u.utils.userUpdate();
 			}
 		}
 	}

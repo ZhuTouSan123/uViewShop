@@ -9,7 +9,8 @@
         "pages/profile/star/star",
         "pages/profile/address/address",
         "pages/auth/findpassword",
-        "pages/auth/reg"
+        "pages/auth/reg",
+        "pages/detail/detail"
     ],
     "subPackages": [],
     "window": {

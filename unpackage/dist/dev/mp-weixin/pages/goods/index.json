@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "商品",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-icon": "/uview-ui/components/u-icon/u-icon"
+  }
 }

@@ -6,7 +6,7 @@
 // https://uviewui.com/js/http.html#%E4%BD%95%E8%B0%93%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%EF%BC%9F
 const install = (Vue, vm) => {
 	vm.$u.api = {};
-	
+
 	// 此处没有使用传入的params参数
 	//认证相关
 	//注册
@@ -20,14 +20,25 @@ const install = (Vue, vm) => {
 	vm.$u.api.authCode = (params = {}) => vm.$u.post('/api/auth/reset/password/email/code', params);
 	//通过邮箱验证
 	vm.$u.api.authFindpwd = (params = {}) => vm.$u.post('/api/auth/reset/password/email', params);
-	
+	//获取阿里云OSS Token
+	vm.$u.api.authOssToken = () => vm.$u.get('/api/auth/oss/token');
+
 	//首页
 	vm.$u.api.index = (params = {}) => vm.$u.get('/api/index', params);
-	
-	//用户相关/api/auth/register
-	//个人中心
+
+	//用户相关
+	//获取用户信息
 	vm.$u.api.userInfo = () => vm.$u.get('/api/user');
-	
+	//更新用户信息/api/user
+	vm.$u.api.userUpdate = (params = {}) => vm.$u.put('/api/user', params);
+	//更新头像 调用前先去上方接口中调用获取阿里云OSS Token的接口
+	vm.$u.api.userUpdateAvatar = (params = {}) => vm.$u.patch('/api/user/avatar', params);
+
+	//商品相关
+	//商品列表
+	vm.$u.api.getGoodsList = (params = {}) => vm.$u.get('/api/goods', params);
+	//商品详情
+	vm.$u.api.getGoodsDetail = (id) => vm.$u.get(`/api/goods/${id}`);
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	// vm.$u.api = {getSearch, getInfo};
 }

@@ -946,7 +946,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7611,7 +7611,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7632,14 +7632,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7725,7 +7725,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8753,7 +8753,7 @@ var router = (0, _uniSimpleRouter.createRouter)({
   APP: {
     holdTabbar: true //默认是true
   },
-  routes: _toConsumableArray([{"path":"/pages/index/index","aliasPath":"/"},{"path":"/pages/goods/index"},{"path":"/pages/cart/index","name":"cart"},{"path":"/pages/profile/index","name":"mine"},{"path":"/pages/auth/login"},{"path":"/pages/profile/modify/modify"},{"path":"/pages/profile/star/star"},{"path":"/pages/profile/address/address"},{"path":"/pages/auth/findpassword"},{"path":"/pages/auth/reg"}]) });
+  routes: _toConsumableArray([{"path":"/pages/index/index","aliasPath":"/"},{"path":"/pages/goods/index"},{"path":"/pages/cart/index","name":"cart"},{"path":"/pages/profile/index","name":"mine"},{"path":"/pages/auth/login"},{"path":"/pages/profile/modify/modify"},{"path":"/pages/profile/star/star"},{"path":"/pages/profile/address/address"},{"path":"/pages/auth/findpassword"},{"path":"/pages/auth/reg"},{"path":"/pages/detail/detail"}]) });
 
 //全局路由前置守卫
 // router.beforeEach((to, from, next) => {
@@ -12701,14 +12701,25 @@ var install = function install(Vue, vm) {
   vm.$u.api.authCode = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.post('/api/auth/reset/password/email/code', params);};
   //通过邮箱验证
   vm.$u.api.authFindpwd = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.post('/api/auth/reset/password/email', params);};
+  //获取阿里云OSS Token
+  vm.$u.api.authOssToken = function () {return vm.$u.get('/api/auth/oss/token');};
 
   //首页
   vm.$u.api.index = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get('/api/index', params);};
 
-  //用户相关/api/auth/register
-  //个人中心
+  //用户相关
+  //获取用户信息
   vm.$u.api.userInfo = function () {return vm.$u.get('/api/user');};
+  //更新用户信息/api/user
+  vm.$u.api.userUpdate = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.put('/api/user', params);};
+  //更新头像 调用前先去上方接口中调用获取阿里云OSS Token的接口
+  vm.$u.api.userUpdateAvatar = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.patch('/api/user/avatar', params);};
 
+  //商品相关
+  //商品列表
+  vm.$u.api.getGoodsList = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get('/api/goods', params);};
+  //商品详情
+  vm.$u.api.getGoodsDetail = function (id) {return vm.$u.get("/api/goods/".concat(id));};
   // 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
   // vm.$u.api = {getSearch, getInfo};
 };var _default =
@@ -12718,6 +12729,34 @@ var install = function install(Vue, vm) {
 
 /***/ }),
 /* 47 */
+/*!************************************************!*\
+  !*** E:/uniappCode/uView_shop/common/utils.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var install = function install(Vue, vm) {
+  var userUpdate = /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+
+                vm.$u.api.userInfo());case 2:userInfo = _context.sent;
+              //修改vuex
+              vm.$u.vuex('vuex_user', userInfo);
+              vm.$u.toast('更新成功');case 5:case "end":return _context.stop();}}}, _callee);}));return function userUpdate() {return _ref.apply(this, arguments);};}();
+
+
+  vm.$u.utils = {
+    userUpdate: userUpdate };
+
+};var _default =
+
+
+
+{
+  install: install };exports.default = _default;
+
+/***/ }),
+/* 48 */
 /*!**************************************************!*\
   !*** E:/uniappCode/uView_shop/store/$u.mixin.js ***!
   \**************************************************/

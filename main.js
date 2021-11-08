@@ -34,6 +34,10 @@ Vue.use(httpInterceptor, app)
 import httpApi from '@/common/http.api.js'
 Vue.use(httpApi, app)
 
+// 公共小工具
+import utils from '@/common/utils.js'
+Vue.use(utils, app)
+
 //v1.3.5起 H5端 你应该去除原有的app.$mount();使用路由自带的渲染方式
 // #ifdef H5
 	RouterMount(app,router,'#app')

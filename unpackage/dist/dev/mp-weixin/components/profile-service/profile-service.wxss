@@ -7,7 +7,7 @@
   display: flex;
   margin-bottom: 10rpx;
   background-color: #FFFFFF;
-  padding: 40rpx;
+  padding: 30rpx;
   font-size: 32rpx;
 }
 .profile-service .arrow-right.data-v-9b1211b0 {

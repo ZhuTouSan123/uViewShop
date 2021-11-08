@@ -1,1 +1,1 @@
-<view><u-avatar vue-id="22958666-1" src="{{vuex_user.avatar_url}}" size="120" data-event-opts="{{[['^click',[['updateAvatar']]]]}}" bind:click="__e" bind:__l="__l"></u-avatar></view>
+<view><u-field bind:input="__e" vue-id="22958666-1" label="昵称" required="{{true}}" value="{{name}}" data-event-opts="{{[['^input',[['__set_model',['','name','$event',[]]]]]]}}" bind:__l="__l"></u-field><button class="u-m-t-20" type="primary" data-event-opts="{{[['tap',[['userUpdate',['$event']]]]]}}" bindtap="__e">确认修改</button></view>

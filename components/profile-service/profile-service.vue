@@ -18,7 +18,7 @@
 		display: flex;
 		margin-bottom: 10rpx;
 		background-color: #FFFFFF;
-		padding: 40rpx;
+		padding: 30rpx;
 		font-size: 32rpx;
 		.arrow-right{
 			margin-left: auto;

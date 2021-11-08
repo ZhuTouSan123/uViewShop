@@ -2,6 +2,6 @@
   "navigationBarTitleText": "修改信息",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "u-avatar": "/uview-ui/components/u-avatar/u-avatar"
+    "u-field": "/uview-ui/components/u-field/u-field"
   }
 }
