@@ -1,6 +1,8 @@
 <template>
-	<view>
-		cart
+	<view id="cart">
+		<scroll-view scroll-y="true" >
+			<view></view>
+		</scroll-view>
 	</view>
 </template>
 
@@ -8,7 +10,7 @@
 	export default {
 		data() {
 			return {
-				name:'123'
+				cartList:[]
 			};
 		},
 		onShow() {
@@ -24,6 +26,15 @@
 				},1500)
 			}
 		},
+		onLoad() {
+			this.getCartList();
+		},
+		methods:{
+			async getCartList(){
+				const {data} = await this.$u.api.getCartList({include: "goods"});
+				this.cartList = data;
+			}
+		}
 	}
 </script>
 

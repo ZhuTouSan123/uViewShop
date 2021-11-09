@@ -41,11 +41,14 @@ const install = (Vue, vm) => {
 	vm.$u.api.getGoodsDetail = (id) => vm.$u.get(`/api/goods/${id}`);
 	// 搜索商品
 	vm.$u.api.goodsSearch = (title) => vm.$u.get("/api/goods",title);
+	
 	// 收藏/取消
 	vm.$u.api.isCollect = (id) => vm.$u.post(`/api/collects/goods/${id}`);
 	// 我的收藏
 	vm.$u.api.myCollectGoods = (params = {}) => vm.$u.get("/api/collects", params);
 	
+	// 购物车列表
+	vm.$u.api.getCartList = (include = {}) => vm.$u.get("/api/carts", include);
 	
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下

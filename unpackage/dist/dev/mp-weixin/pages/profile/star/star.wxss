@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.star-card.data-v-2c497b60 {
+  margin-bottom: 4rpx;
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.2);
+}
+.star-card button.data-v-2c497b60 {
+  margin-left: auto;
+}
+.star-card .card-left.data-v-2c497b60 {
+  height: 160rpx;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.star-card .card-left .date.data-v-2c497b60 {
+  left: 60rpx;
+  bottom: 0;
+  font-size: 24rpx;
+  color: #999;
+}
+.star-card .card-left .price.data-v-2c497b60 {
+  color: red;
+}
+.star-card .card-left .title.data-v-2c497b60 {
+  font-weight: 600;
+  font-size: 28rpx;
+}
+.star-card .card-left .description.data-v-2c497b60 {
+  font-size: 24rpx;
+  color: #888;
+}
+

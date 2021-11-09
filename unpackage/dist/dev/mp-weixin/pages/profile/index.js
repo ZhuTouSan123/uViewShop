@@ -96,10 +96,10 @@ var components
 try {
   components = {
     ossUpload: function() {
-      return __webpack_require__.e(/*! import() | components/oss-upload/oss-upload */ "components/oss-upload/oss-upload").then(__webpack_require__.bind(null, /*! @/components/oss-upload/oss-upload.vue */ 191))
+      return __webpack_require__.e(/*! import() | components/oss-upload/oss-upload */ "components/oss-upload/oss-upload").then(__webpack_require__.bind(null, /*! @/components/oss-upload/oss-upload.vue */ 193))
     },
     profileService: function() {
-      return __webpack_require__.e(/*! import() | components/profile-service/profile-service */ "components/profile-service/profile-service").then(__webpack_require__.bind(null, /*! @/components/profile-service/profile-service.vue */ 196))
+      return __webpack_require__.e(/*! import() | components/profile-service/profile-service */ "components/profile-service/profile-service").then(__webpack_require__.bind(null, /*! @/components/profile-service/profile-service.vue */ 198))
     }
   }
 } catch (e) {
