@@ -1,0 +1,1 @@
+<u-image vue-id="3cd8e1c0-1" mode="widthFix" src="http://121.40.159.226:5001/wechat.jpg" show-menu-by-longpress="{{true}}" class="data-v-f9b472b4" bind:__l="__l"></u-image>

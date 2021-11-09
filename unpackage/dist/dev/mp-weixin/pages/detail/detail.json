@@ -1,5 +1,12 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "商品详情",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "u-badge": "/uview-ui/components/u-badge/u-badge",
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-row": "/uview-ui/components/u-row/u-row",
+    "u-col": "/uview-ui/components/u-col/u-col",
+    "goods-card": "/components/goods-card/goods-card"
+  }
 }

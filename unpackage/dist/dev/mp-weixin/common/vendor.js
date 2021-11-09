@@ -946,7 +946,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7611,7 +7611,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7632,14 +7632,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7725,7 +7725,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"uView-demo","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8753,7 +8753,7 @@ var router = (0, _uniSimpleRouter.createRouter)({
   APP: {
     holdTabbar: true //默认是true
   },
-  routes: _toConsumableArray([{"path":"/pages/index/index","aliasPath":"/"},{"path":"/pages/goods/index"},{"path":"/pages/cart/index","name":"cart"},{"path":"/pages/profile/index","name":"mine"},{"path":"/pages/auth/login"},{"path":"/pages/profile/modify/modify"},{"path":"/pages/profile/star/star"},{"path":"/pages/profile/address/address"},{"path":"/pages/auth/findpassword"},{"path":"/pages/auth/reg"},{"path":"/pages/detail/detail"}]) });
+  routes: _toConsumableArray([{"path":"/pages/index/index","aliasPath":"/"},{"path":"/pages/goods/index"},{"path":"/pages/cart/index","name":"cart"},{"path":"/pages/profile/index","name":"mine"},{"path":"/pages/auth/login"},{"path":"/pages/profile/modify/modify"},{"path":"/pages/profile/star/star"},{"path":"/pages/profile/address/address"},{"path":"/pages/auth/findpassword"},{"path":"/pages/auth/reg"},{"path":"/pages/detail/detail"},{"path":"/pages/kefu/kefu"}]) });
 
 //全局路由前置守卫
 // router.beforeEach((to, from, next) => {
@@ -12642,7 +12642,7 @@ var install = function install(Vue, vm) {
         vm.$u.toast('验证失败，请重新登录');
         setTimeout(function () {
           // 此为uView的方法，详见路由相关文档
-          vm.$u.route('/pages/user/login');
+          vm.$u.route('/pages/auth/login');
         }, 1500);
       }
       return false;
@@ -12689,37 +12689,46 @@ var install = function install(Vue, vm) {
   vm.$u.api = {};
 
   // 此处没有使用传入的params参数
-  //认证相关
-  //注册
+  // 认证相关
+  // 注册
   vm.$u.api.authReg = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.post('/api/auth/register', params);};
-  //登录
+  // 登录
   vm.$u.api.authLogin = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.post('/api/auth/login', params);};
-  //退出
+  // 退出
   vm.$u.api.authLogout = function () {return vm.$u.post('/api/auth/logout');};
-  //找回密码
-  //获取邮箱验证码	
+  // 找回密码
+  // 获取邮箱验证码	
   vm.$u.api.authCode = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.post('/api/auth/reset/password/email/code', params);};
-  //通过邮箱验证
+  // 通过邮箱验证
   vm.$u.api.authFindpwd = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.post('/api/auth/reset/password/email', params);};
-  //获取阿里云OSS Token
+  // 获取阿里云OSS Token
   vm.$u.api.authOssToken = function () {return vm.$u.get('/api/auth/oss/token');};
 
-  //首页
+  // 首页
   vm.$u.api.index = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get('/api/index', params);};
 
-  //用户相关
-  //获取用户信息
+  // 用户相关
+  // 获取用户信息
   vm.$u.api.userInfo = function () {return vm.$u.get('/api/user');};
-  //更新用户信息/api/user
+  // 更新用户信息/api/user
   vm.$u.api.userUpdate = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.put('/api/user', params);};
-  //更新头像 调用前先去上方接口中调用获取阿里云OSS Token的接口
+  // 更新头像 调用前先去上方接口中调用获取阿里云OSS Token的接口
   vm.$u.api.userUpdateAvatar = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.patch('/api/user/avatar', params);};
 
-  //商品相关
-  //商品列表
+  // 商品相关
+  // 商品列表
   vm.$u.api.getGoodsList = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get('/api/goods', params);};
-  //商品详情
+  // 商品详情
   vm.$u.api.getGoodsDetail = function (id) {return vm.$u.get("/api/goods/".concat(id));};
+  // 搜索商品
+  vm.$u.api.goodsSearch = function (title) {return vm.$u.get("/api/goods", title);};
+  // 收藏/取消
+  vm.$u.api.isCollect = function (id) {return vm.$u.post("/api/collects/goods/".concat(id));};
+  // 我的收藏
+  vm.$u.api.myCollectGoods = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get("/api/collects", params);};
+
+
+
   // 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
   // vm.$u.api = {getSearch, getInfo};
 };var _default =

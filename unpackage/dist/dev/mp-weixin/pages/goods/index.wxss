@@ -4,7 +4,7 @@
  * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
  */
 .u-wrap.data-v-520b1870 {
-  height: calc(100vh);
+  height: calc(100vh - 100rpx);
   display: flex;
   flex-direction: column;
 }
@@ -15,18 +15,6 @@
   flex: 1;
   display: flex;
   overflow: hidden;
-}
-.u-search-inner.data-v-520b1870 {
-  background-color: #eaeaea;
-  border-radius: 100rpx;
-  display: flex;
-  align-items: center;
-  padding: 10rpx 16rpx;
-}
-.u-search-text.data-v-520b1870 {
-  font-size: 26rpx;
-  color: #909399;
-  margin-left: 10rpx;
 }
 .u-tab-view.data-v-520b1870 {
   width: 200rpx;
@@ -70,7 +58,6 @@
 }
 .class-item.data-v-520b1870 {
   margin-bottom: 30rpx;
-  background-color: #fff;
   padding: 16rpx;
   border-radius: 8rpx;
 }

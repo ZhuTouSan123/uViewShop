@@ -95,8 +95,8 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uIcon: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 176))
+    uSearch: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 184))
     }
   }
 } catch (e) {
@@ -193,7 +193,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {
@@ -204,7 +203,8 @@ var _default =
       current: '0-2', // 预设当前项的值
       menuHeight: 0, // 左边菜单的高度
       menuItemHeight: 0, // 左边菜单item的高度
-      goodsTitle: '区块链' };
+      goodsTitle: '区块链',
+      searchVal: '' };
 
   },
   computed: {
@@ -217,44 +217,56 @@ var _default =
     this.getGoodsList(this.categoryId);
   },
   methods: {
-    getTabbar: function getTabbar() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this.$u.api.getGoodsList());case 2:res = _context.sent;
-                _this.tabbar = res.categories;case 4:case "end":return _context.stop();}}}, _callee);}))();
+    goodsSearch: function goodsSearch() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.$u.api.goodsSearch({
+                    title: _this.searchVal }));case 2:res = _context.sent;
+
+                _this.goodsTitle = "搜索结果";
+                _this.goodsList = res.goods.data;
+                _this.searchVal = "";
+                _this.current = '';case 7:case "end":return _context.stop();}}}, _callee);}))();
     },
-    getGoodsList: function getGoodsList(id) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  _this2.$u.api.getGoodsList({ category_id: id }));case 2:res = _context2.sent;
-                _this2.goodsList = res.goods.data;case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+    getTabbar: function getTabbar() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this2.$u.api.getGoodsList());case 2:res = _context2.sent;
+                _this2.tabbar = res.categories;case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    getGoodsList: function getGoodsList(id) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _this3.$u.api.getGoodsList({
+                    category_id: id }));case 2:res = _context3.sent;
+
+                _this3.goodsList = res.goods.data;case 4:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     // 点击左边的栏目切换
-    swichMenu: function swichMenu(index, $event) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-                console.log($event);if (!(
-                index == _this3.current)) {_context3.next = 3;break;}return _context3.abrupt("return");case 3:
-                _this3.current = index;
+    swichMenu: function swichMenu(index, $event) {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:if (!(
+                index == _this4.current)) {_context4.next = 2;break;}return _context4.abrupt("return");case 2:
+                _this4.current = index;
                 // 如果为0，意味着尚未初始化
-                if (!(_this3.menuHeight == 0 || _this3.menuItemHeight == 0)) {_context3.next = 9;break;}_context3.next = 7;return (
-                  _this3.getElRect('menu-scroll-view', 'menuHeight'));case 7:_context3.next = 9;return (
-                  _this3.getElRect('u-tab-item', 'menuItemHeight'));case 9:
+                if (!(_this4.menuHeight == 0 || _this4.menuItemHeight == 0)) {_context4.next = 8;break;}_context4.next = 6;return (
+                  _this4.getElRect('menu-scroll-view', 'menuHeight'));case 6:_context4.next = 8;return (
+                  _this4.getElRect('u-tab-item', 'menuItemHeight'));case 8:
 
                 // 将菜单菜单活动item垂直居中
-                _this3.scrollTop = index * _this3.menuItemHeight + _this3.menuItemHeight / 2 - _this3.menuHeight / 2;
+                _this4.scrollTop = index * _this4.menuItemHeight + _this4.menuItemHeight / 2 - _this4.menuHeight / 2;
                 // 修改右侧标题
-                _this3.goodsTitle = $event.currentTarget.dataset.name;
+                _this4.goodsTitle = $event.currentTarget.dataset.name;
                 // 分类查询商品列表
-                _this3.getGoodsList(_this3.categoryId);case 12:case "end":return _context3.stop();}}}, _callee3);}))();
+                _this4.getGoodsList(_this4.categoryId);case 11:case "end":return _context4.stop();}}}, _callee4);}))();
     },
     // 获取一个目标元素的高度
-    getElRect: function getElRect(elClass, dataVal) {var _this4 = this;
+    getElRect: function getElRect(elClass, dataVal) {var _this5 = this;
       new Promise(function (resolve, reject) {
-        var query = uni.createSelectorQuery().in(_this4);
-        query.select('.' + elClass).fields({ size: true }, function (res) {
+        var query = uni.createSelectorQuery().in(_this5);
+        query.select('.' + elClass).fields({
+          size: true },
+        function (res) {
           // 如果节点尚未生成，res值为null，循环调用执行
           if (!res) {
             setTimeout(function () {
-              _this4.getElRect(elClass);
+              _this5.getElRect(elClass);
             }, 10);
             return;
           }
-          _this4[dataVal] = res.height;
+          _this5[dataVal] = res.height;
         }).exec();
       });
     } } };exports.default = _default;

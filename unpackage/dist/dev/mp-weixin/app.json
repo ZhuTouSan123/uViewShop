@@ -10,7 +10,8 @@
         "pages/profile/address/address",
         "pages/auth/findpassword",
         "pages/auth/reg",
-        "pages/detail/detail"
+        "pages/detail/detail",
+        "pages/kefu/kefu"
     ],
     "subPackages": [],
     "window": {

@@ -79,7 +79,16 @@
             "path" : "pages/detail/detail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "商品详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/kefu/kefu",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "客服",
                 "enablePullDownRefresh": false
             }
             

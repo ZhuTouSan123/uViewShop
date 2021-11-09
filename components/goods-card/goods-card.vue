@@ -1,20 +1,22 @@
 <template>
-	<navigator url="" class="goodsBox">	
-		<u-image width="100%" height="300rpx" :src="g.cover_url" class="u-skeleton-fillet"></u-image>
-		<view class="title u-line-1 u-skeleton-fillet">{{g.title ? g.title:"@@"}}</view>
-		<view class="u-flex u-row-between">
-			<view class="price u-skeleton-fillet"><text>￥</text>{{g.price}}</view>
-			<view class="sales u-skeleton-fillet">{{g.sales}}已付款</view>
-		</view>
-	</navigator>
+	<view>
+		<navigator :url="`/pages/detail/detail?good=${g.id}`" class="goodsBox">
+			<u-image width="100%" height="300rpx" :src="g.cover_url" class="u-skeleton-fillet"></u-image>
+			<view class="title u-line-1 u-skeleton-fillet">{{g.title ? g.title:"@@"}}</view>
+			<view class="u-flex u-row-between">
+				<view class="price u-skeleton-fillet"><text>￥</text>{{g.price}}</view>
+				<view class="sales u-skeleton-fillet">{{g.sales}}已付款</view>
+			</view>
+		</navigator>
+	</view>
 </template>
 
 <script>
 	export default {
-		props:{
-			g:{
-				type:Object,
-				default(){
+		props: {
+			g: {
+				type: Object,
+				default () {
 					return {}
 				}
 			}
@@ -49,7 +51,6 @@
 
 		.sales {
 			color: #888;
-			width: 40%;
 		}
 	}
 </style>

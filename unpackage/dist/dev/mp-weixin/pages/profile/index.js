@@ -96,10 +96,10 @@ var components
 try {
   components = {
     ossUpload: function() {
-      return __webpack_require__.e(/*! import() | components/oss-upload/oss-upload */ "components/oss-upload/oss-upload").then(__webpack_require__.bind(null, /*! @/components/oss-upload/oss-upload.vue */ 183))
+      return __webpack_require__.e(/*! import() | components/oss-upload/oss-upload */ "components/oss-upload/oss-upload").then(__webpack_require__.bind(null, /*! @/components/oss-upload/oss-upload.vue */ 191))
     },
     profileService: function() {
-      return __webpack_require__.e(/*! import() | components/profile-service/profile-service */ "components/profile-service/profile-service").then(__webpack_require__.bind(null, /*! @/components/profile-service/profile-service.vue */ 188))
+      return __webpack_require__.e(/*! import() | components/profile-service/profile-service */ "components/profile-service/profile-service").then(__webpack_require__.bind(null, /*! @/components/profile-service/profile-service.vue */ 196))
     }
   }
 } catch (e) {
@@ -187,22 +187,20 @@ var _default =
       isSrcShow: false };
 
   },
-  onShow: function onShow() {
+  onShow: function onShow() {var _this = this;
     if (!uni.getStorageSync('lifeData')) {
       uni.showToast({
         title: '请先登录',
         icon: 'error' });
 
       setTimeout(function () {
-        uni.redirectTo({
-          url: '/pages/auth/login' });
-
+        _this.$Router.replace('/pages/auth/login');
       }, 1500);
     }
   },
   methods: {
-    logout: function logout() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this.$u.api.authLogout());case 2:res = _context.sent;
+    logout: function logout() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this2.$u.api.authLogout());case 2:res = _context.sent;
                 uni.clearStorageSync();
                 uni.redirectTo({
                   url: '/pages/index/index' });case 5:case "end":return _context.stop();}}}, _callee);}))();

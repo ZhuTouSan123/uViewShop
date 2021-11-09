@@ -36,9 +36,7 @@
 					icon:'error'
 				});
 				setTimeout(()=>{
-					uni.redirectTo({
-						url:'/pages/auth/login'
-					})
+					this.$Router.replace('/pages/auth/login')
 				},1500)
 			}
 		},

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+	let _this;
 	export default {
 		name:"oss-upload",
 		data() {
@@ -31,6 +32,9 @@
 				fileList:[],
 				key:''
 			};
+		},
+		created() {
+			_this = this;
 		},
 		methods:{
 			//上传前钩子
@@ -48,12 +52,12 @@
 				
 				//取后缀
 				let str = imgTitle.slice(imgTitle.lastIndexOf('.'));
-				let id = this.$u.guid(20);
+				let id = _this.$u.guid(20);
 				const key = id + str;
-				this.key = key;
-				const oss = await this.$u.api.authOssToken();
-				this.action = oss.host;
-				this.formData = {
+				_this.key = key;
+				const oss = await _this.$u.api.authOssToken();
+				_this.action = oss.host;
+				_this.formData = {
 					'key' : key, //文件名
 					'policy': oss.policy,
 					'OSSAccessKeyId': oss.accessid, 
