@@ -1,0 +1,44 @@
+.scrollbar.data-v-457cfe48 {
+  padding-bottom: 100rpx;
+}
+.cart-right.data-v-457cfe48 {
+  top: 20rpx;
+  right: 20rpx;
+}
+.cart-left.data-v-457cfe48 {
+  height: 160rpx;
+}
+.cart-left .price.data-v-457cfe48 {
+  color: red;
+}
+.cart-left .title.data-v-457cfe48 {
+  font-weight: 600;
+  font-size: 28rpx;
+}
+.cart-left .description.data-v-457cfe48 {
+  font-size: 24rpx;
+  color: #888;
+}
+.description.data-v-457cfe48 {
+  width: 300rpx;
+}
+.numberbox.data-v-457cfe48 {
+  right: 20rpx;
+  bottom: 40rpx;
+}
+.totalbox.data-v-457cfe48 {
+  width: 100%;
+  position: fixed;
+  bottom: -1rpx;
+  border-top: 1px solid #888;
+  background-color: #fff;
+}
+.totalbox button.data-v-457cfe48 {
+  width: 30%;
+  margin-right: 0;
+}
+.totalbox .total-price text.data-v-457cfe48 {
+  margin-left: 20rpx;
+  color: red;
+}
+

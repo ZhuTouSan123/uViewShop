@@ -47,9 +47,16 @@ const install = (Vue, vm) => {
 	// 我的收藏
 	vm.$u.api.myCollectGoods = (params = {}) => vm.$u.get("/api/collects", params);
 	
+	// 添加进购物车
+	vm.$u.api.addToCart = (params) => vm.$u.post("/api/carts", params);
 	// 购物车列表
 	vm.$u.api.getCartList = (include = {}) => vm.$u.get("/api/carts", include);
-	
+	// 改变选中
+	vm.$u.api.checkCarts = (params = {}) => vm.$u.patch("/api/carts/checked", params);
+	// 购物车数量改变
+	vm.$u.api.setCartsNum = (num,id) => vm.$u.put(`/api/carts/${id}`, num);
+	// 移出购物车
+	vm.$u.api.deleteCart = (id) => vm.$u.delete(`/api/carts/${id}`);
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	// vm.$u.api = {getSearch, getInfo};

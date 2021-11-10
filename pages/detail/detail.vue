@@ -1,9 +1,8 @@
 <template>
 	<view id="detail">
-		<scroll-view scroll-y="true" class="scrollbar u-m-b-100">
+		<scroll-view scroll-y="true" class="scrollbar">
 			<view class="detail-img u-p-l-20 u-p-r-20">
 				<view class="imgbox u-flex u-row-center">
-					<!-- <u-image  :src="good.cover_url"></u-image> -->
 					<image :src="good.cover_url" mode="widthFix"></image>
 				</view>
 				<view class="good-title">{{good.title}}</view>
@@ -65,14 +64,14 @@
 					<u-icon name="star" :size="40" :color="starColor"></u-icon>
 					<view class="text u-line-1">收藏</view>
 				</view>
-				<view class="item car">
-					<u-badge class="car-num" :count="9" type="error" :offset="[-3, -6]"></u-badge>
+				<view class="item car" @click="goCart">
+					<u-badge class="car-num" :count="cartCount" type="error" :offset="[-3, -6]"></u-badge>
 					<u-icon name="shopping-cart" :size="40" :color="$u.color['contentColor']"></u-icon>
 					<view class="text u-line-1">购物车</view>
 				</view>
 			</view>
 			<view class="right">
-				<view class="cart btn u-line-1">加入购物车</view>
+				<view class="cart btn u-line-1" @click="addToCart">加入购物车</view>
 				<view class="buy btn u-line-1">立即购买</view>
 			</view>
 		</view>
@@ -97,6 +96,7 @@
 				],
 				count: 0,
 				likegoods: [],
+				cartCount: 0
 			};
 		},
 		computed: {
@@ -107,7 +107,14 @@
 		onLoad(option) {
 			this.getGoodsDetail(option.good);
 		},
+		onShow(){
+			this.getCartList();
+		},
 		methods: {
+			async getCartList(){
+				const res = await this.$u.api.getCartList();
+				this.cartCount = res.data.length;
+			},
 			async collectGood() {
 				await this.$u.api.isCollect(this.good.id);
 				if (this.starColor == '') {
@@ -129,6 +136,16 @@
 				this.good = good.goods;
 				this.count = good.goods.comments.length;
 				this.likegoods = good.like_goods;
+			},
+			async addToCart(){
+				await this.$u.api.addToCart({goods_id: this.good.id});
+				this.$u.toast("添加成功");
+				this.getCartList();
+			},
+			goCart(){
+				uni.switchTab({
+					url:'/pages/cart/index'
+				})
 			}
 		}
 	}

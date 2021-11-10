@@ -12722,12 +12722,22 @@ var install = function install(Vue, vm) {
   vm.$u.api.getGoodsDetail = function (id) {return vm.$u.get("/api/goods/".concat(id));};
   // 搜索商品
   vm.$u.api.goodsSearch = function (title) {return vm.$u.get("/api/goods", title);};
+
   // 收藏/取消
   vm.$u.api.isCollect = function (id) {return vm.$u.post("/api/collects/goods/".concat(id));};
   // 我的收藏
   vm.$u.api.myCollectGoods = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get("/api/collects", params);};
 
-
+  // 添加进购物车
+  vm.$u.api.addToCart = function (params) {return vm.$u.post("/api/carts", params);};
+  // 购物车列表
+  vm.$u.api.getCartList = function () {var include = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get("/api/carts", include);};
+  // 改变选中
+  vm.$u.api.checkCarts = function () {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.patch("/api/carts/checked", params);};
+  // 购物车数量改变
+  vm.$u.api.setCartsNum = function (num, id) {return vm.$u.put("/api/carts/".concat(id), num);};
+  // 移出购物车
+  vm.$u.api.deleteCart = function (id) {return vm.$u.delete("/api/carts/".concat(id));};
 
   // 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
   // vm.$u.api = {getSearch, getInfo};
